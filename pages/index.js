@@ -3,7 +3,7 @@ import {PostCard, PostWidget, Categories} from '../components';
 import getPosts from '../services';
 
 export default function Home({posts}) {
-
+   // posts structure [{node: {author, createdAt, ...}}, node: {...}, ...]
    return (
       <div className='container mx-auto px-10 mb-8'>
          <Head>

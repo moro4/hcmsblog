@@ -3,13 +3,13 @@ import Link from 'next/link';
 import {useState, useEffect} from 'react';
 import {getRecentPosts, getSimilarPosts} from '../services';
 
-const PostWidget = ({categories, slug}) => {
+const PostWidget = ({slug, categories}) => {
 
    const [relatedPosts, setRelatedPosts] = useState([]);
 
    useEffect(() => {
       if(slug) {
-         getSimilarPosts(categories, slug).then(
+         getSimilarPosts(slug, categories).then(
             result => setRelatedPosts(result)
          )
       } else {
@@ -36,7 +36,7 @@ const PostWidget = ({categories, slug}) => {
                   <p className='text-gray-500 text-xs'>
                      {moment(post.createdAt).format('DD MMM, YYYY')}
                   </p>
-                  <Link href={'/post/' + 'post.slug'} className='text-md'>
+                  <Link href={'/post/' + post.slug} className='text-md'>
                      {post.title}
                   </Link>
                </div>
