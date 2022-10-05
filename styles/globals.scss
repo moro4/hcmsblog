@@ -62,6 +62,67 @@ a {
    box-sizing: border-box;
 }
 
+.maincontent p,
+.maincontent ul,
+.maincontent ol {
+   margin-bottom: 1em;
+   line-height: 26px;
+}
+
+.maincontent ul li,
+.maincontent ol li {
+   list-style-type: disc;
+   margin-left: 2em;
+   margin-bottom: 0.5em;
+}
+
+
+
+
+
+
+
+.maincontent table {
+   & {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1em;
+   }
+   & p {
+      margin: 0;
+      padding: 0;
+   }
+   & td, th {
+      padding: 15px;
+   }
+
+   & thead td, thead th {
+      background-color: #54585d;
+      color: #ffffff;
+      text-align: left;
+      font-weight: bold;
+      border: 1px solid #54585d;
+   }
+
+   & tbody td {
+      color: #636363;
+      border: 1px solid #dddfe1;
+   }
+
+   & tbody tr {
+      background-color: #f9fafb;
+   }
+
+   & tbody tr:nth-child(odd) {
+      background-color: #ffffff;
+   }
+}
+
+.maincontent a {
+   color: blue;
+   text-decoration: underline;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -61,7 +61,7 @@ export async function getPostDetails(slug) {
                slug
             }
             content {
-               raw
+               html
             }
          }
       }`
