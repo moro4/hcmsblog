@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import {submitComment} from '../services';
 
 function CommentsForm({slug}) {
 
@@ -10,15 +11,20 @@ function CommentsForm({slug}) {
    const emailEl = useRef();
    const storeDataEl = useRef();
 
+   useEffect(() => {
+      nameEl.current.value = window.localStorage.getItem('name');
+      emailEl.current.value = window.localStorage.getItem('email');
+   }, []);
+
    function handleCommentSubmission() {
+
       setError(false);
 
       const [comment, name, email, storeData] = [
          commentEl.current.value,
          nameEl.current.value,
          emailEl.current.value,
-         storeDataEl.current.check
-
+         storeDataEl.current.checked
       ];
 
       if(!comment || !name || !email) {
@@ -29,19 +35,24 @@ function CommentsForm({slug}) {
       const commentObj = {name, email, comment, slug};
 
       if(storeData) {
-         localStorage.setItem('name', name);
-         localStorage.setItem('email', email);
+         window.localStorage.setItem('name', name);
+         window.localStorage.setItem('email', email);
       } else {
-         localStorage.removeItem('name', name);
-         localStorage.removeItem('email', email);
+         window.localStorage.removeItem('name', name);
+         window.localStorage.removeItem('email', email);
       }
+
+      submitComment(commentObj).then((res) => {
+         setShowSuccessMessage(true);
+         setTimeout(() => setShowSuccessMessage(false), 2000);
+      })
    }
 
    return (
       <div className='bg-white shadow-lg rounded-lg p-8 pb-12 mb-8'>
 
          <h3 className='text-xl mb-8 font-semibold border-b pb-4'>
-            Post a Comment!
+            Leave a Comment!
          </h3>
 
          <div className='mb-4'>
@@ -92,7 +103,7 @@ function CommentsForm({slug}) {
                inline-block bg-pink-600 text-lg rounded-full text-white
                px-8 py-3 cursor-pointer'
             >
-               Post Comment!
+               Post
             </button>
 
             {
