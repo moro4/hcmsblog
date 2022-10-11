@@ -2,7 +2,6 @@ import moment from 'moment';
 import parse from 'html-react-parser';
 
 function PostDetail({ post }) {
-   console.log('in post', post.content);
    return (
       <div className='bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8'>
          <div className='relative overflow-hidden shadow-md mb-6'>

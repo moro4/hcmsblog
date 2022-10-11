@@ -2,7 +2,6 @@ import moment from 'moment';
 import Link from 'next/link';
 
 const PostCard = ({ post: { node: post } }) => {
-   console.log('post object in category', post);
    return (
       <div className='bg-white shadow-lg rounded-lg p-0 pb-12 mb-8 lg:p-8'>
 
